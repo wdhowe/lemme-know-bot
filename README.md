@@ -1,0 +1,77 @@
+# lemme-know-bot
+
+A Telegram Bot that mentions you when your specified text in a chat matches.
+
+## Installation
+
+Using the lemme-know-bot code in your own project.
+
+Leiningen/Boot Project file
+
+```clojure
+[lemme-know-bot "0.1.0-SNAPSHOT"]
+```
+
+### Include the Library
+
+In the REPL
+
+```clojure
+(require '[lemme-know-bot.core :as lemme])
+```
+
+In your application
+
+```clojure
+(ns my-app.core
+  (:require [lemme-know-bot.core :as lemme]))
+```
+
+## Usage
+
+Building and running the lemme-know-bot service.
+
+### Pre-Reqs
+
+- Create a Telegram bot using the botfather.
+  - Configure the bot to give it access to group chat messages. (group privacy disabled)
+- Install leiningen.
+- Clone this project.
+- Build the jar:
+
+```bash
+lein uberjar
+```
+
+### Run the App
+
+- Make your bot token available in the environment:
+
+```bash
+export BOT_TOKEN="MY-TOKEN-HERE"
+```
+
+- Start the service
+
+```bash
+java -jar lemme-know-bot-VERSION-standalone.jar
+```
+
+- Add your bot to a Telegram group chat.
+- Start chatting with your bot in the Telegram group chat.
+  - Send '/help' to get started.
+
+## License
+
+Copyright © 2020 Bill Howe
+
+This program and the accompanying materials are made available under the
+terms of the Eclipse Public License 2.0 which is available at
+<http://www.eclipse.org/legal/epl-2.0>.
+
+This Source Code may also be made available under the following Secondary
+Licenses when the conditions for such availability set forth in the Eclipse
+Public License, v. 2.0 are satisfied: GNU General Public License as published by
+the Free Software Foundation, either version 2 of the License, or (at your
+option) any later version, with the GNU Classpath Exception which is available
+at <https://www.gnu.org/software/classpath/license.html>.
