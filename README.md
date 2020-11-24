@@ -1,5 +1,7 @@
 # lemme-know-bot
 
+[![Build Status][gh-actions-badge]][gh-actions] [![Clojars Project][clojars-badge]][clojars] [![Clojure Docs][cljdoc-badge]][cljdoc-link] [![Clojure version][clojure-v]](project.clj)
+
 A Telegram Bot that mentions you when your specified text in a chat matches.
 
 ## Installation
@@ -9,7 +11,7 @@ Using the lemme-know-bot code in your own project.
 Leiningen/Boot Project file
 
 ```clojure
-[lemme-know-bot "0.1.0-SNAPSHOT"]
+[lemme-know-bot "0.1.0"]
 ```
 
 ### Include the Library
@@ -75,3 +77,15 @@ Public License, v. 2.0 are satisfied: GNU General Public License as published by
 the Free Software Foundation, either version 2 of the License, or (at your
 option) any later version, with the GNU Classpath Exception which is available
 at <https://www.gnu.org/software/classpath/license.html>.
+
+----
+
+<!-- Named page links below: /-->
+
+[gh-actions-badge]: https://github.com/wdhowe/lemme-know-bot/workflows/ci%2Fcd/badge.svg
+[gh-actions]: https://github.com/wdhowe/lemme-know-bot/actions
+[cljdoc-badge]: https://cljdoc.org/badge/lemme-know-bot/lemme-know-bot
+[cljdoc-link]: https://cljdoc.org/d/lemme-know-bot/lemme-know-bot/CURRENT
+[clojure-v]: https://img.shields.io/badge/clojure-1.10.0-blue.svg
+[clojars]: https://clojars.org/lemme-know-bot
+[clojars-badge]: https://img.shields.io/clojars/v/lemme-know-bot.svg
