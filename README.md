@@ -31,23 +31,36 @@ In your application
 
 ## Usage
 
-Building and running the lemme-know-bot service.
+Building and running the lemme-know-bot service via a Docker container or Java Jar.
 
-### Pre-Reqs
+### Pre-Reqs - Both Methods
 
 - Create a Telegram bot using the botfather.
   - Configure the bot to give it access to group chat messages. (group privacy disabled)
+
+### Run the App - Docker
+
+- Run the container
+
+```bash
+docker run -env BOT_TOKEN="MY-TOKEN-HERE" wdhowe/lemme-know-bot
+```
+
+### Pre-Reqs - Java Jar Method
+
+Pre-reqs for building the Java Jar.
+
 - Install leiningen.
 - Clone this project.
-- Build the jar:
+- Build the jar
 
 ```bash
 lein uberjar
 ```
 
-### Run the App
+### Run the App - Java Jar
 
-- Make your bot token available in the environment:
+- Make your bot token available in the environment
 
 ```bash
 export BOT_TOKEN="MY-TOKEN-HERE"
@@ -58,6 +71,10 @@ export BOT_TOKEN="MY-TOKEN-HERE"
 ```bash
 java -jar lemme-know-bot-VERSION-standalone.jar
 ```
+
+### Post Service Run Bot Setup
+
+Once the service is running from one of the above methods:
 
 - Add your bot to a Telegram group chat.
 - Start chatting with your bot in the Telegram group chat.
