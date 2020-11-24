@@ -43,7 +43,7 @@ Building and running the lemme-know-bot service via a Docker container or Java J
 - Run the container
 
 ```bash
-docker run -env BOT_TOKEN="MY-TOKEN-HERE" wdhowe/lemme-know-bot
+docker run --env BOT_TOKEN="MY-TOKEN-HERE" wdhowe/lemme-know-bot
 ```
 
 ### Pre-Reqs - Java Jar Method
