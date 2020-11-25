@@ -5,6 +5,7 @@
             [lemme-know-bot.config :as cfg]
             [lemme-know-bot.fields :as fields]
             [lemme-know-bot.handlers :as handlers]
+            [lemme-know-bot.notify :as notify]
             [lemme-know-bot.status :as status]
             [taoensso.timbre :as log]
             [telegrambot-lib.core :as tbot]))
@@ -76,16 +77,31 @@
       (Thread/sleep (:sleep cfg/config)))
     (recur)))
 
+(defn edn->searches
+  "Attempt to load an external edn file into the searches atom."
+  []
+  (let [loaded-search (cfg/load-edn (:searches cfg/config))]
+    (when (some? loaded-search)
+      (log/info "loading previous searches.")
+      (notify/load-searches! loaded-search))))
+
 (defn shutdown-service
   "Shutdown the service cleanly."
   []
   (shutdown-agents)
+
+  (when (seq @notify/searches)
+    (log/info "saving searches list to:" (:searches cfg/config))
+    (cfg/save-file (into [] @notify/searches) (:searches cfg/config)))
+
   (log/info "lemme-know-bot service exited."))
 
 (defn -main
   "Create the Telegram bot and run the application."
   []
   (log/info "starting lemme-know-bot service.")
+
+  (edn->searches)
 
   (.addShutdownHook (Runtime/getRuntime)
                     (Thread. ^Runnable shutdown-service))
@@ -94,4 +110,4 @@
 
     (if (some? (:bot-token lemme-bot))
       (app lemme-bot)
-      (log/info "required bot-token not found! exiting."))))
+      (log/error "required bot-token not found! exiting."))))

@@ -1,5 +1,5 @@
 (ns lemme-know-bot.notify-test
-  (:require [clojure.test :refer [deftest is testing]]
+  (:require [clojure.test :refer [are deftest is testing]]
             [lemme-know-bot.notify :as notify]))
 
 (deftest searches-test
@@ -27,3 +27,15 @@
 
       ;; count after removing another search
       (is (= 2 (count rm-search))))))
+
+(deftest load-searches!-test
+  (testing "Testing load-searches! with different data structures."
+    (are [func result] (= func result)
+
+      ;; count is 4 due to previous test's manipulation of the atom
+      (count (notify/load-searches! [{:user "user1", :text "hello"}
+                                     {:user "user1", :text "hi there"}])) 4
+
+      (count (notify/load-searches! {:user "user1", :text "invalid"})) 0
+
+      (count (notify/load-searches! "invalid")) 0)))
