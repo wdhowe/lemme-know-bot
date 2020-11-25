@@ -1,8 +1,30 @@
 (ns lemme-know-bot.notify
   "Functions to add, list, remove, track the notify search list."
-  (:gen-class))
+  (:gen-class)
+  (:require [taoensso.timbre :as log]))
 
 (defonce searches (atom []))
+
+(defprotocol search-data
+  "Only load supported data types."
+  (load-searches! [content]
+    "Load a searches data structure at once, merging content with an existing."))
+
+(extend-protocol search-data
+  clojure.lang.PersistentVector
+  (load-searches!
+    [content]
+    (swap! searches into content))
+  Object
+  (load-searches!
+    [content]
+    (log/warn "not loading searches. data is not a supported type.")))
+
+(comment
+  (load-searches! [{:user "user1", :text "my search1"}])
+  (load-searches! [{:user "user2", :text "my search2"}])
+  (load-searches! {:user "user1" :text "invalid"})
+  (load-searches! "invalid"))
 
 (defn add-search!
   "Add a search to the searches atom vector."
