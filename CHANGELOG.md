@@ -4,9 +4,11 @@ All notable changes to this project will be documented in this file. This change
 
 ## [Unreleased]
 
-- None yet.
+### Unreleased Added
 
-## 0.1.0 - TBD
+- Dockerfile for building the service in a container.
+
+## 0.1.0 - 2020-11-23
 
 - Initial project release.
 
