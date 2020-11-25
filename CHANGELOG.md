@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file. This change
 ### Unreleased Added
 
 - Dockerfile for building the service in a container.
+- Persistent searches ([issue-1](https://github.com/wdhowe/lemme-know-bot/issues/1))
 
 ## 0.1.0 - 2020-11-23
 
