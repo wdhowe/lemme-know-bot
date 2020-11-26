@@ -88,6 +88,7 @@
       ;; not blank - add the text and message back
       (do
         (notify/add-search! username add-text)
+        (notify/clean-searches!)
 
         (send-msg bot chat-id
                   (str username ", search added for: '" add-text "'")))
