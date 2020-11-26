@@ -3,9 +3,10 @@ FROM clojure:openjdk-8-lein
 
 # Environment settings
 ENV APP_DIR=/usr/src/app
+ENV SAVE_DIR=/usr/src/app/state
 
-# Setup the application directory
-RUN mkdir -p ${APP_DIR}
+# Setup the directories
+RUN mkdir -p ${APP_DIR} ${SAVE_DIR}
 WORKDIR ${APP_DIR}
 
 # Download application dependencies
