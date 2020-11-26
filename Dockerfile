@@ -1,5 +1,5 @@
 # Instructions from: https://hub.docker.com/_/clojure/
-FROM clojure:openjdk-8-lein
+FROM clojure:openjdk-11-lein
 
 # Environment settings
 ENV APP_DIR=/usr/src/app

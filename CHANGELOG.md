@@ -6,6 +6,12 @@ All notable changes to this project will be documented in this file. This change
 
 - Nothing yet.
 
+## [0.2.1] - 2020-11-26
+
+### 0.2.1 Changed
+
+- Bumped openjdk version in Dockerfile from 8 to 11.
+
 ## [0.2.0] - 2020-11-25
 
 ### 0.2.0 Added
@@ -21,7 +27,8 @@ All notable changes to this project will be documented in this file. This change
 
 ---
 
-[Unreleased]: https://github.com/wdhowe/lemme-know-bot/compare/0.2.0...HEAD
+[Unreleased]: https://github.com/wdhowe/lemme-know-bot/compare/0.2.1...HEAD
+[0.2.1]: https://github.com/wdhowe/lemme-know-bot/compare/0.2.0...0.2.1
 [0.2.0]: https://github.com/wdhowe/lemme-know-bot/compare/0.1.0...0.2.0
 
 [comment]: # (Types of changes)
