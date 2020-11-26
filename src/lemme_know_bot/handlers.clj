@@ -11,7 +11,11 @@
 (defn send-msg
   "Send a message to the chat."
   [bot chat-id text]
-  (tbot/send-message bot chat-id text))
+  (try
+    (tbot/send-message bot chat-id text)
+
+    (catch Exception e
+      (log/error "tbot/send-message exception:" e))))
 
 (defn help
   "Send info about this bot and available commands."
