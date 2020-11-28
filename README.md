@@ -13,7 +13,7 @@ To build the service JAR or use the Docker container instead, go to the next sec
 Leiningen/Boot Project file
 
 ```clojure
-[lemme-know-bot "0.2.0"]
+[lemme-know-bot "0.3.0"]
 ```
 
 ### Include the Library
