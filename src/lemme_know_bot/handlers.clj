@@ -56,7 +56,7 @@
         username (fields/from-user msg)]
     (send-msg bot chat-id
               (str username ", your searches are: "
-                   (into [] (notify/list-searches username))))))
+                   (into [] (notify/list-searches chat-id username))))))
 
 (defn extract-keyword
   "Extract only the keyword(s) from a text message.
@@ -87,7 +87,7 @@
     (if (not (string/blank? add-text))
       ;; not blank - add the text and message back
       (do
-        (notify/add-search! username add-text)
+        (notify/add-search! chat-id username add-text)
         (notify/clean-searches!)
 
         (send-msg bot chat-id
@@ -111,7 +111,7 @@
     (if (not (string/blank? rm-text))
       ;; not blank - remove and message back
       (do
-        (notify/remove-search! username rm-text)
+        (notify/remove-search! chat-id username rm-text)
 
         (send-msg bot chat-id
                   (str username ", search removed for: '" rm-text "'")))
@@ -127,11 +127,14 @@
    Mention the user if found."
   [bot msg]
   (let [msg-text (string/lower-case (fields/text msg))
-        chat-id (fields/chat-id msg)]
+        chat-id (fields/chat-id msg)
+        chat-entries (filter #(= (str chat-id)
+                                 (:chat-id %))
+                             @notify/searches)]
 
     (log/debug "searching for keywords in:" msg-text)
 
-    (doseq [entry @notify/searches]
+    (doseq [entry chat-entries]
       (when (string/includes? msg-text (:text entry))
         (send-msg bot chat-id
                   (str "@" (:user entry)
