@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file. This change
 
 ## [Unreleased]
 
-- Nothing yet.
+- Search lists are now chat+username specific (no longer shared across chats) ([issue-2](https://github.com/wdhowe/lemme-know-bot/issues/2))
 
 ## [0.2.1] - 2020-11-26
 
