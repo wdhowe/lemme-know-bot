@@ -1,4 +1,4 @@
-(defproject lemme-know-bot "0.3.0"
+(defproject lemme-know-bot "0.3.1"
   :description "A Telegram Bot that mentions you when the specified text in a chat matches."
   :url "https://github.com/wdhowe/lemme-know-bot"
   :license {:name "EPL-2.0 OR GPL-2.0-or-later WITH Classpath-exception-2.0"
@@ -6,7 +6,7 @@
   :dependencies [[com.taoensso/timbre "5.1.0"]
                  [environ "1.2.0"]
                  [org.clojure/clojure "1.10.1"]
-                 [telegrambot-lib "0.3.0"]]
+                 [telegrambot-lib "0.3.1"]]
   :main ^:skip-aot lemme-know-bot.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}
