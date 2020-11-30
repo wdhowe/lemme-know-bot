@@ -6,6 +6,12 @@ All notable changes to this project will be documented in this file. This change
 
 - Nothing yet.
 
+## [0.3.1] - 2020-11-29
+
+### 0.3.1 Changed
+
+- Dependency bump telegrambot-lib 0.3.0 to 0.3.1.
+
 ## [0.3.0] - 2020-11-27
 
 ### 0.3.0 Changed
@@ -33,7 +39,8 @@ All notable changes to this project will be documented in this file. This change
 
 ---
 
-[Unreleased]: https://github.com/wdhowe/lemme-know-bot/compare/0.3.0...HEAD
+[Unreleased]: https://github.com/wdhowe/lemme-know-bot/compare/0.3.1...HEAD
+[0.3.1]: https://github.com/wdhowe/lemme-know-bot/compare/0.3.0...0.3.1
 [0.3.0]: https://github.com/wdhowe/lemme-know-bot/compare/0.2.1...0.3.0
 [0.2.1]: https://github.com/wdhowe/lemme-know-bot/compare/0.2.0...0.2.1
 [0.2.0]: https://github.com/wdhowe/lemme-know-bot/compare/0.1.0...0.2.0
