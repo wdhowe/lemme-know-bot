@@ -33,8 +33,12 @@
    (poll-updates bot nil))
 
   ([bot offset]
-   (tbot/get-updates bot {:offset offset
-                          :timeout (:timeout cfg/config)})))
+   (try
+     (tbot/get-updates bot {:offset offset
+                            :timeout (:timeout cfg/config)})
+
+     (catch Exception e
+       (log/error "tbot/get-updates exception:" e)))))
 
 (defn handle-msg
   "Check the message text for command or string matches and handle the

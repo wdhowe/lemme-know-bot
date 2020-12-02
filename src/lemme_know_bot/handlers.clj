@@ -23,16 +23,16 @@
   (log/debug "/help or /start command received.")
 
   (let [chat-id (fields/chat-id msg)]
-    (send-msg bot chat-id
-              (str "-- Lemme-Know-Bot: Help/Getting Started --\n"
-                   "This bot can watch the current chat for keywords/phrases "
-                   "and mention you when one has been seen.\n\n"
-                   "The following commands are supported:\n"
-                   "/add keyword - add a new keyword to watch for in this chat.\n"
-                   "/list - list all the watched keywords.\n"
-                   "/remove keyword - remove a watched keyword.\n"
-                   "/help - show this help message with available commands.\n"
-                   "/settings - show the bot configuration."))))
+    (future (send-msg bot chat-id
+                      (str "-- Lemme-Know-Bot: Help/Getting Started --\n"
+                           "This bot can watch the current chat for keywords/phrases "
+                           "and mention you when one has been seen.\n\n"
+                           "The following commands are supported:\n"
+                           "/add keyword - add a new keyword to watch for in this chat.\n"
+                           "/list - list all the watched keywords.\n"
+                           "/remove keyword - remove a watched keyword.\n"
+                           "/help - show this help message with available commands.\n"
+                           "/settings - show the bot configuration.")))))
 
 (defn settings
   "Implements the /settings command."
@@ -42,10 +42,10 @@
   (let [chat-id (fields/chat-id msg)
         cfg-timeout (:timeout cfg/config)
         cfg-sleep (:sleep cfg/config)]
-    (send-msg bot chat-id
-              (str "-- Lemme-Know-Bot: Settings --\n"
-                   "Timeout (secs) to wait during a long poll: " cfg-timeout "\n"
-                   "Sleep (ms) between polls: " cfg-sleep))))
+    (future (send-msg bot chat-id
+                      (str "-- Lemme-Know-Bot: Settings --\n"
+                           "Timeout (secs) to wait during a long poll: " cfg-timeout "\n"
+                           "Sleep (ms) between polls: " cfg-sleep)))))
 
 (defn list-search
   "List the current searches setup for the user."
@@ -54,9 +54,9 @@
 
   (let [chat-id (fields/chat-id msg)
         username (fields/from-user msg)]
-    (send-msg bot chat-id
-              (str username ", your searches are: "
-                   (into [] (notify/list-searches chat-id username))))))
+    (future (send-msg bot chat-id
+                      (str username ", your searches are: "
+                           (into [] (notify/list-searches chat-id username)))))))
 
 (defn extract-keyword
   "Extract only the keyword(s) from a text message.
@@ -90,14 +90,14 @@
         (notify/add-search! chat-id username add-text)
         (notify/clean-searches!)
 
-        (send-msg bot chat-id
-                  (str username ", search added for: '" add-text "'")))
+        (future (send-msg bot chat-id
+                          (str username ", search added for: '" add-text "'"))))
 
       ;; blank text - do not add
-      (send-msg bot chat-id
-                (str username ", search NOT added. "
-                     "Passed parameter text was blank.\n"
-                     "Try sending something like: /add cheeseburger")))))
+      (future (send-msg bot chat-id
+                        (str username ", search NOT added. "
+                             "Passed parameter text was blank.\n"
+                             "Try sending something like: /add cheeseburger"))))))
 
 (defn remove-search
   "Remove a search for the user."
@@ -113,14 +113,14 @@
       (do
         (notify/remove-search! chat-id username rm-text)
 
-        (send-msg bot chat-id
-                  (str username ", search removed for: '" rm-text "'")))
+        (future (send-msg bot chat-id
+                          (str username ", search removed for: '" rm-text "'"))))
 
       ;; blank text - do not remove
-      (send-msg bot chat-id
-                (str username ", search NOT removed. "
-                     "Passed parameter text was blank.\n"
-                     "Try sending someting like: /remove cheeseburger")))))
+      (future (send-msg bot chat-id
+                        (str username ", search NOT removed. "
+                             "Passed parameter text was blank.\n"
+                             "Try sending someting like: /remove cheeseburger"))))))
 
 (defn search
   "Search for a match in the text.
@@ -134,11 +134,11 @@
 
     (log/debug "searching for keywords in:" msg-text)
 
-    (doseq [entry chat-entries]
-      (when (string/includes? msg-text (:text entry))
-        (send-msg bot chat-id
-                  (str "@" (:user entry)
-                       " search string '"
-                       (:text entry)
-                       "' was found in message:\n"
-                       "'" msg-text "'"))))))
+    (future (doseq [entry chat-entries]
+              (when (string/includes? msg-text (:text entry))
+                (send-msg bot chat-id
+                          (str "@" (:user entry)
+                               " search string '"
+                               (:text entry)
+                               "' was found in message:\n"
+                               "'" msg-text "'")))))))
