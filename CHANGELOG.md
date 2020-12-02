@@ -4,7 +4,8 @@ All notable changes to this project will be documented in this file. This change
 
 ## [Unreleased]
 
-- Nothing yet.
+- Protect get-updates from exiting the bot with any exceptions, log the error instead.
+- Send messages on a futures thread to continue processing.
 
 ## [0.3.1] - 2020-11-29
 
