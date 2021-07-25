@@ -4,8 +4,15 @@ All notable changes to this project will be documented in this file. This change
 
 ## [Unreleased]
 
+- Nothing yet.
+
+## [0.4.0] - 2021-07-24
+
+### 0.4.0 Changed
+
 - Protect get-updates from exiting the bot with any exceptions, log the error instead.
 - Send messages on a futures thread to continue processing.
+- Updated project dependency versions.
 
 ## [0.3.1] - 2020-11-29
 
@@ -40,7 +47,8 @@ All notable changes to this project will be documented in this file. This change
 
 ---
 
-[Unreleased]: https://github.com/wdhowe/lemme-know-bot/compare/0.3.1...HEAD
+[Unreleased]: https://github.com/wdhowe/lemme-know-bot/compare/0.4.0...HEAD
+[0.4.0]: https://github.com/wdhowe/lemme-know-bot/compare/0.3.1...0.4.0
 [0.3.1]: https://github.com/wdhowe/lemme-know-bot/compare/0.3.0...0.3.1
 [0.3.0]: https://github.com/wdhowe/lemme-know-bot/compare/0.2.1...0.3.0
 [0.2.1]: https://github.com/wdhowe/lemme-know-bot/compare/0.2.0...0.2.1
