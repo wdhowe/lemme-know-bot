@@ -10,13 +10,9 @@ Using the lemme-know-bot code in your own project.
 
 To build the service JAR or use the Docker container instead, go to the next section.
 
-Leiningen/Boot Project file
+See the `lemme-know-bot` [Clojars page][clojars] for details on adding this library to projects for Leiningen, Boot, and CLI/deps.edn.
 
-```clojure
-[lemme-know-bot "0.3.1"]
-```
-
-### Include the Library
+### Require the Library
 
 In the REPL
 
