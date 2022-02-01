@@ -4,118 +4,13 @@
 
 A Telegram Bot that mentions you when your specified text in a chat matches.
 
-## Using the Code
+For details on the latest release, see the [Releases](https://github.com/wdhowe/lemme-know-bot/releases).
 
-Using the lemme-know-bot code in your own project.
-
-To build the service JAR or use the Docker container instead, go to the next section.
-
-See the `lemme-know-bot` [Clojars page][clojars] for details on adding this library to projects for Leiningen, Boot, and CLI/deps.edn.
-
-### Require the Library
-
-In the REPL
-
-```clojure
-(require '[lemme-know-bot.core :as lemme])
-```
-
-In your application
-
-```clojure
-(ns my-app.core
-  (:require [lemme-know-bot.core :as lemme]))
-```
-
-## Configuration
-
-Supported environment variables and whether they are required to be provided.
-
-| Variable     | Default                            | Description                                            | Required? |
-| ------------ | ---------------------------------- | ------------------------------------------------------ | --------- |
-| BOT_TOKEN    | none                               | Token for bot to authenticate to the Telegram servers. | Yes       |
-| LKB_SEARCHES | "/tmp/lemme-know-bot-searches.edn" | File for saving search state to.                       | No        |
-| LKB_SLEEP    | 10000                              | Sleep time in ms between long polls.                   | No        |
-| LKB_TIMEOUT  | 10                                 | Timeout in seconds to wait while long polling.         | No        |
-
-## Usage
-
-Building the Java Jar and running it or the Docker container.
-
-### Pre-Reqs
-
-Before building the JAR or running the docker container:
-
-- Create a Telegram bot using the botfather.
-  - Configure the bot to give it access to group chat messages. (group privacy disabled)
-
-Proceed with either the [Docker](#run-the-app---docker) or [Jar](#run-the-app---java-jar) instructions.
-
-### Run the App - Docker
-
-- Setup the volume for saving the search state
-
-```bash
-# Docker volume name (docker volume ls)
-DOCKER_VOL=lemme-know-bot
-
-docker volume create ${DOCKER_VOL}
-
-# Container path for the search state (matches the Dockerfile)
-CONTAINER_SAVE_DIR=/usr/src/app/state
-```
-
-- Run the container
-
-```bash
-docker run \
---detach \
---name lemme-know-bot \
---env BOT_TOKEN="MY-TOKEN-HERE" \
---env LKB_SEARCHES=${CONTAINER_SAVE_DIR}/lemme-know-bot-searches.edn \
---volume ${DOCKER_VOL}:${CONTAINER_SAVE_DIR} \
-wdhowe/lemme-know-bot
-```
-
-### Pre-Reqs - Java Jar
-
-Pre-reqs for building the Java Jar.
-
-- Install leiningen.
-- Clone this project.
-- Build the jar
-
-```bash
-lein uberjar
-```
-
-### Run the App - Java Jar
-
-- Make your bot token available in the environment
-  - Other env vars should be exported at this step if you would like to change any default settings.
-  - See [Configuration](#configuration) for details.
-
-```bash
-export BOT_TOKEN="MY-TOKEN-HERE"
-```
-
-- Start the service
-
-```bash
-java -jar lemme-know-bot-VERSION-standalone.jar
-```
-
-### Telegram Group Setup
-
-Once the service is running from one of the above methods:
-
-- Add your bot to a Telegram group chat.
-- Start chatting with your bot in the Telegram group chat.
-  - Send '/help' to get started.
+See the [wiki for usage](https://github.com/wdhowe/lemme-know-bot/wiki).
 
 ## License
 
-Copyright © 2020 Bill Howe
+Copyright © 2020-2022 Bill Howe
 
 This program and the accompanying materials are made available under the
 terms of the Eclipse Public License 2.0 which is available at
