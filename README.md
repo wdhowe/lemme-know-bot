@@ -31,6 +31,6 @@ at <https://www.gnu.org/software/classpath/license.html>.
 [gh-actions]: https://github.com/wdhowe/lemme-know-bot/actions
 [cljdoc-badge]: https://cljdoc.org/badge/lemme-know-bot/lemme-know-bot
 [cljdoc-link]: https://cljdoc.org/d/lemme-know-bot/lemme-know-bot/CURRENT
-[clojure-v]: https://img.shields.io/badge/clojure-1.10.3-blue.svg
+[clojure-v]: https://img.shields.io/badge/clojure-1.11.1-blue.svg
 [clojars]: https://clojars.org/lemme-know-bot
 [clojars-badge]: https://img.shields.io/clojars/v/lemme-know-bot.svg
